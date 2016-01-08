@@ -79,7 +79,7 @@ program sorting
       b = merge2(b(:N/2), b(N/2+1:))
       call system_clock(stop1)
       print *
-      print *, "For 2-image sort, time = ", (stop1-start)/counts_per_second, "second"
+      print *, "For 1-image sort, time = ", (stop1-start)/counts_per_second, "second"
       print *, b(1), b(N), all(b(:N-1)<=b(2:))
       
    endif
