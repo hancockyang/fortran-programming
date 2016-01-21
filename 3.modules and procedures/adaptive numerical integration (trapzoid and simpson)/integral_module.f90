@@ -5,6 +5,10 @@ module integral_module
    
    contains
       recursive function integral_trap(f, a, b, tolerance) result(integral_result)
+      ! divide the trapzoid area to two parts and evaluate the accuracy
+      ! f: function
+      ! a: starting point
+      ! b: end point
          intrinsic :: abs
          interface
             function f(x) result(f_result)
@@ -22,7 +26,7 @@ module integral_module
          mid = (a + b)/2.0d0
          one_trapezoid_area = h*(f(a) + f(b)) / 2.0d0
          two_trapezoid_area = h/2.0d0*(f(a) + f(mid)) / 2.0d0 + h/2.0d0*(f(mid) + f(b)) / 2.0d0
-         
+         ! the error analysis is shown in page 113-114
          if (abs(one_trapezoid_area - two_trapezoid_area) < 3.0d0*tolerance) then
             integral_result = two_trapezoid_area
          else
@@ -54,7 +58,7 @@ module integral_module
          mid2 = (mid + b)/2.0d0
          two_simpson_area = h*(f(a) + 4.0d0*f(mid1) + f(mid)) / 6.0d0 + h*(f(mid) + 4.0d0*f(mid2) + f(b)) / 6.0d0
          
-         if (abs(one_simpson_area - two_simpson_area) < 3.0d0*tolerance) then
+         if (abs(one_simpson_area - two_simpson_area) < 15.0d0*tolerance) then
             integral_result = two_simpson_area
          else
             left_area = integral_simpson(f, a, mid, tolerance/2)
