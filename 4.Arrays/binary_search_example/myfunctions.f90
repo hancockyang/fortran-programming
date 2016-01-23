@@ -341,7 +341,13 @@ module myfunctions
 
 !*********************************************end of quick_select subroutine****************************
 !***********************************************binary_search subroutine********************************
+
    subroutine binary_search(list, element, index, found)
+   ! If the search must be performed on a traditional computer by making one comparison
+   ! at a time, the search can be made more efficient by maintaining the list in the order
+   ! of increasing card number. As soon as one canceled card number examined in the
+   ! search is too large, all subsequent ones will also be too large, so the search can be abandoned
+   ! early
       implicit none
       double precision, dimension(:), intent(in):: list
       double precision, intent(in):: element
