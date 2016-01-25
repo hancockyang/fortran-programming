@@ -5,7 +5,7 @@ module myfunctions
    
    public :: integral_trap, integral_simpson, append, quick_sort, merge2, quick_select, binary_search, brute_force_search, random, linspace
    private :: random_int,random_real
-   
+   ! generic procedure
    interface random
       module procedure random_int, random_real
    end interface
